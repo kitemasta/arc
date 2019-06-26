@@ -1,11 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
+
+console.log('asdasf')
 
 const App: FC = () => {
-  return (
-    <div className="App">
-      Hello!
-    </div>
-  );
+	return <div className="App">Hello!</div>
 }
 
-export default App;
+export default App
