@@ -3,19 +3,14 @@ import { fetchSaga } from '../../helpers/redux/sagas'
 import { API } from './../../helpers/api'
 import { LOGIN } from './../../common/const'
 
-const authSaga = function*(action: any) {
-	yield fetchSaga(action.meta.entity, API.get('/users/2'), {
-		storeField: 'entityById',
-	})
-	yield fetchSaga(action.meta.entity, API.get('/users'), {
-		isAuthenticated: true,
-	})
+const loginSaga = function*(action: any) {
+	yield fetchSaga(action.meta.entity, API.get('/users'))
 }
 
-function* watchAuthSaga() {
-	yield takeLatest(LOGIN, authSaga)
+function* watchLoginSaga() {
+	yield takeLatest(LOGIN, loginSaga)
 }
 
 export default function* authPageSagas() {
-	yield all([watchAuthSaga()])
+	yield all([watchLoginSaga()])
 }

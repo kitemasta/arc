@@ -1,5 +1,7 @@
 import { call, put } from 'redux-saga/effects'
+// import { normalize } from 'normalizr'
 import { actionsByEntityMap } from './../../actions/index'
+// import { usersSchema } from '../schemas/users'
 
 export const fetchSaga = function*(entity: string, api: any, metaData?: any) {
 	try {

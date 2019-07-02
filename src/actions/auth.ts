@@ -1,8 +1,8 @@
-import { LOGIN } from './../common/const'
+import * as types from './../common/const'
 
 export const login = () => ({
-	type: LOGIN,
+	type: types.LOGIN,
 	meta: {
-		entity: 'auth',
+		entity: types.USERS,
 	},
 })
