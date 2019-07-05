@@ -16,10 +16,7 @@ export const createMetaReducer = (entity: string) => (
 		case types.REQUEST:
 			return { ...state, isLoading: true, error: null }
 		case types.SUCCESS:
-			return {
-				...state,
-				isLoading: false,
-			}
+			return { ...state, isLoading: false, data: payload.result }
 		case types.FAILURE:
 			return { ...state, isLoading: false, error: payload }
 		case types.RESET:

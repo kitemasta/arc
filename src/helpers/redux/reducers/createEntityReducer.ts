@@ -1,8 +1,6 @@
 import * as types from '../../../common/const'
 
-const initialState = {
-	data: null,
-}
+const initialState = {}
 
 export const createEntityReducer = (entity: string) => (
 	state = initialState,
@@ -14,7 +12,7 @@ export const createEntityReducer = (entity: string) => (
 		case types.SUCCESS:
 			return {
 				...state,
-				data: payload,
+				...payload.entities[entity],
 			}
 		case types.RESET:
 			return initialState
