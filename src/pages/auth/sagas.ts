@@ -1,10 +1,12 @@
 import { all, takeLatest } from 'redux-saga/effects'
-import { fetchSaga } from '../../helpers/redux/sagas'
-import { API } from './../../helpers/api'
 import { LOGIN } from './../../common/const'
+import { getUsers, getCars } from './../../helpers/networkRequests'
 
-const loginSaga = function*(action: any) {
-	yield fetchSaga(action.meta.entity, API.get('/users'))
+const loginSaga = function*() {
+	yield getUsers()
+	yield getCars()
+
+	// yield call(fetchSaga, action.meta.entity,  API.get('/users'))
 }
 
 function* watchLoginSaga() {

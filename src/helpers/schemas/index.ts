@@ -1,9 +1,16 @@
-import { usersSchema } from './users'
+import { schema } from 'normalizr'
 
 interface SchemasInterface {
 	[key: string]: any
 }
 
+const carSchema = new schema.Entity('cars')
+
+const userSchema = new schema.Entity('users', {
+	cars: [carSchema],
+})
+
 export const schemas: SchemasInterface = {
-	users: usersSchema,
+	users: userSchema,
+	cars: carSchema,
 }

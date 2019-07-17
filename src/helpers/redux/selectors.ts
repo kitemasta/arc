@@ -6,12 +6,12 @@ export const getEntitySelector = (entity: string) =>
 	createSelector(
 		({ entities }) => entities,
 		({ meta }) => meta[entity].data,
-		(entities, result) => denormalize(result, schemas[entity], entities)
+		(entities, result) => denormalize(result, [schemas[entity]], entities)
 	)
 
 export const getOneEntitySelector = (entity: string) =>
 	createSelector(
 		({ entities }) => entities,
 		(state: any, id: number) => id,
-		(entities, id) => entities[entity][id]
+		(entities, id) => denormalize(id, schemas[entity], entities)
 	)

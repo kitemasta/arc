@@ -1,12 +1,13 @@
+import { has } from 'lodash'
 import * as types from '../../../common/const'
 
 const initialState = {}
 
 export const createEntityReducer = (entity: string) => (
 	state = initialState,
-	{ type, payload, meta = {} }: any = {}
+	{ type, payload }: any = {}
 ) => {
-	if (entity !== meta.entity) return state
+	if (!has(payload, `entities.${entity}`)) return state
 
 	switch (type) {
 		case types.SUCCESS:
