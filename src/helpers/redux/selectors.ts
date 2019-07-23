@@ -2,10 +2,17 @@ import { denormalize } from 'normalizr'
 import { createSelector } from 'reselect'
 import { schemas } from '../schemas'
 
-export const getEntitySelector = (entity: string) =>
+interface Options {
+	resultSelector: (state: any) => string[]
+}
+
+export const getEntitySelector = (
+	entity: string,
+	{ resultSelector = ({ meta }) => meta[entity].data }: Options = {} as Options
+) =>
 	createSelector(
 		({ entities }) => entities,
-		({ meta }) => meta[entity].data,
+		resultSelector,
 		(entities, result) => denormalize(result, [schemas[entity]], entities)
 	)
 

@@ -4,7 +4,11 @@ interface SchemasInterface {
 	[key: string]: any
 }
 
-const carSchema = new schema.Entity('cars')
+const brandSchema = new schema.Entity('brands')
+
+const carSchema = new schema.Entity('cars', {
+	brands: [brandSchema],
+})
 
 const userSchema = new schema.Entity('users', {
 	cars: [carSchema],
@@ -13,4 +17,5 @@ const userSchema = new schema.Entity('users', {
 export const schemas: SchemasInterface = {
 	users: userSchema,
 	cars: carSchema,
+	brands: brandSchema,
 }

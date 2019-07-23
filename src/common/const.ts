@@ -7,7 +7,8 @@ export const RESET = 'RESET'
 // application entities
 export const USERS = 'users'
 export const CARS = 'cars'
-export const ENTITIES = [USERS, CARS]
+export const BRANDS = 'brands'
+export const ENTITIES = [USERS, CARS, BRANDS]
 
 // user actions
 export const LOGIN = 'LOGIN'

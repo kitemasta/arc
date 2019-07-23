@@ -5,8 +5,6 @@ import { getUsers, getCars } from './../../helpers/networkRequests'
 const loginSaga = function*() {
 	yield getUsers()
 	yield getCars()
-
-	// yield call(fetchSaga, action.meta.entity,  API.get('/users'))
 }
 
 function* watchLoginSaga() {
