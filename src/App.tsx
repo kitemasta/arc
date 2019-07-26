@@ -4,9 +4,11 @@ import { login } from './actions/auth'
 import { getUsersSelector, getUserSelector } from './selectors/users'
 import { getCarsSelector, getCarSelector } from './selectors/cars'
 import { getBrandsSelector, getBrandSelector } from './selectors/brands'
+// import { bindActionToPromise } from './helpers/redux/actions'
 
 interface AppProps {
-	login: () => void
+	login: any
+	sort?: () => void
 	users: any
 	user: any
 	car: any
@@ -15,9 +17,9 @@ interface AppProps {
 	brand: any
 }
 
-const App: FC<AppProps> = ({ login, users, user, cars, car, brands, brand }) => {
-	const loginHandler = () => {
-		login()
+const App: FC<AppProps> = ({ login, users, user, cars, car, brands, brand, sort }) => {
+	const loginHandler = async () => {
+		await login()
 	}
 	return (
 		<div className="App">

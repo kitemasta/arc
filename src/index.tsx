@@ -8,12 +8,12 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers'
 import App from './App'
 import rootSaga from './sagas'
-import { entityTypeToCommon } from './helpers/redux/middlewares'
+import { toCommonType, entityTypeApiPefix } from './helpers/redux/middlewares'
 
 const sagaMiddleware = createSagaMiddleware()
 export const store = createStore(
 	rootReducer,
-	composeWithDevTools(applyMiddleware(sagaMiddleware, logger, entityTypeToCommon))
+	composeWithDevTools(applyMiddleware(sagaMiddleware, entityTypeApiPefix, logger, toCommonType))
 )
 sagaMiddleware.run(rootSaga)
 

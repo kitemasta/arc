@@ -1,21 +1,26 @@
 import { call, put } from 'redux-saga/effects'
+import { isArray, isEmpty } from 'lodash'
 import { normalize } from 'normalizr'
 import { actionsByEntityMap } from './../../actions'
 import { schemas } from '../schemas'
+import { deleteEntity } from '../networkRequests'
 
 interface Meta {
+	method: string
 	pagination?: any
 }
 
-export const fetchSaga = function*(entity: string, api: any) {
+export const fetchEntitySaga = function*(entity: string, api: any, { method, id }: any) {
 	try {
-		yield put(actionsByEntityMap[entity].REQUEST())
+		yield put(actionsByEntityMap[entity].REQUEST(null, { method }))
 		const {
 			data,
 			headers: { link },
 		} = yield call(api)
 
-		let meta: Meta = {}
+		let meta: Meta = { method }
+
+		// delete in normal project !!
 
 		if (link) {
 			const linkRegEx = /page=\d/g
@@ -43,10 +48,16 @@ export const fetchSaga = function*(entity: string, api: any) {
 				}
 			}
 		}
+		const schema = isArray(data) ? [schemas[entity]] : schemas[entity]
+		const payload = isEmpty(data) ? { ...normalize(data, schema), id } : normalize(data, schema)
 
-		yield put(actionsByEntityMap[entity].SUCCESS(normalize(data, [schemas[entity]]), meta))
+		yield put(actionsByEntityMap[entity].SUCCESS(payload, meta))
 		return { data, link }
 	} catch ({ message, status }) {
-		yield put(actionsByEntityMap[entity].FAILURE({ message, status }))
+		yield put(actionsByEntityMap[entity].FAILURE({ message, status }, { method }))
 	}
+}
+
+export const deleteEntityFlow = function*(action: any) {
+	yield deleteEntity(action.meta.entity, action.payload)
 }
