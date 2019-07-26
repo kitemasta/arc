@@ -3,7 +3,6 @@ import { isArray, isEmpty } from 'lodash'
 import { normalize } from 'normalizr'
 import { actionsByEntityMap } from './../../actions'
 import { schemas } from '../schemas'
-import { deleteEntity } from '../networkRequests'
 
 interface Meta {
 	method: string
@@ -56,8 +55,4 @@ export const fetchEntitySaga = function*(entity: string, api: any, { method, id 
 	} catch ({ message, status }) {
 		yield put(actionsByEntityMap[entity].FAILURE({ message, status }, { method }))
 	}
-}
-
-export const deleteEntityFlow = function*(action: any) {
-	yield deleteEntity(action.meta.entity, action.payload)
 }
