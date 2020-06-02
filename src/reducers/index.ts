@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import { ENTITIES } from './../common/const'
-import { createEntityReducer } from './../helpers/redux/reducers'
+import entityReducer from './entityReducer'
+import metaReducer from './metaReducer'
 
-const reducersByEntity = ENTITIES.reduce((acc: any, entity) => {
-	acc[entity] = createEntityReducer(entity)
-	return acc
-}, {})
-
-export default combineReducers(reducersByEntity)
+export default combineReducers({
+	meta: metaReducer,
+	entities: entityReducer,
+})

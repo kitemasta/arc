@@ -3,26 +3,81 @@
     {
       "id": 1,
       "title": "car1",
-      "ownerId": "1"
+      "brands": [
+        {
+          "id": 1,
+          "title": "Bershka"
+        }
+      ]
     },
     {
       "id": 2,
       "title": "car2",
-      "ownerId": "1"
+      "brands": [
+        {
+          "id": 2,
+          "title": "Zara"
+        }
+      ]
     }
   ],
   "users": [
     {
       "id": 2,
-      "name": "Nastya"
+      "name": "Nastya",
+      "cars": [
+        {
+          "id": 1,
+          "title": "car1",
+          "brands": [
+            {
+              "id": 1,
+              "title": "Bershka"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 1,
-      "name": "Pasha"
+      "name": "Pasha",
+      "cars": [
+        {
+          "id": 2,
+          "title": "car2",
+          "brands": [
+            {
+              "id": 2,
+              "title": "Zara"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Nastya",
-      "id": 3
+      "id": 3,
+      "cars": []
+    },
+    {
+      "name": "Nastya",
+      "id": 4,
+      "cars": []
+    },
+    {
+      "name": "Nastya",
+      "id": 5,
+      "cars": []
+    },
+    {
+      "name": "Masha",
+      "cars": [],
+      "id": 6
+    },
+    {
+      "name": "Polina",
+      "cars": [],
+      "id": 7
     }
   ]
 }

@@ -1,8 +1,5 @@
-import { LOGIN } from './../common/const'
+import * as types from './../common/const'
+import { createAction } from 'redux-actions'
+// import { promiseAction } from '../helpers/redux/actions'
 
-export const login = () => ({
-	type: LOGIN,
-	meta: {
-		entity: 'auth',
-	},
-})
+export const login = createAction(types.LOGIN)

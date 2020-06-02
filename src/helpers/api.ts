@@ -6,3 +6,12 @@ export const API = {
 	put: (url: string, data: any) => () => axios.put(url, data),
 	delete: (url: string) => () => axios.delete(url),
 }
+
+export const URL = {
+	users: {
+		get: 'users',
+		delete: (id: number) => `users/${id}`,
+		update: (id: number) => `users/${id}`,
+		create: 'users',
+	},
+}
