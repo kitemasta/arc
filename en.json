@@ -1,6 +1,3 @@
-[
-	{
-		"term": "dashboard.title",
-		"definition": "Best title in the world"
-	}
-]
+{
+    "dashboard.title": "Title from POEditor"
+}
