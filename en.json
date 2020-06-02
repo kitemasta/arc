@@ -1,3 +1,6 @@
-{
-	"DASHBOARD_LOGIN_TITLE": "RANDOM TITLE"
-}
+[
+	{
+		"term": "dashboard.title",
+		"definition": "Best title in the world"
+	}
+]
